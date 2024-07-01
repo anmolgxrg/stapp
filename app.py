@@ -10,10 +10,10 @@ import math
 from PIL import Image
 
 # Set page configuration to wide format
-st.set_page_config(layout="wide")
+st.set_page_config(layout="wide", page_title="StockOn", page_icon="https://www.psu.edu/favicon.ico")
 
 #Add GEA image
-img_1 = Image.open(r"logogea.png")
+img_1 = Image.open(r"logo.png")
 
 
 st.markdown(
@@ -321,10 +321,10 @@ div[data-testid="stImage"].st-emotion-cache-1v0mbdj {
 
 
 #st.image(img_!,width=300,use_column_width=True)
-header_col_1,header_col_2=st.columns([1,4])
-header_col_1.image(img_1,width=300,use_column_width=True)
+header_col_1,header_col_2=st.columns([1,10])
+header_col_1.image(img_1,width=150,use_column_width=False)
 #title
-header_col_2.markdown('<div class="title-wrapper">Environment Reporting Control Testing App</div>', unsafe_allow_html=True)
+header_col_2.markdown('<div class="title-wrapper">StockOn</div>', unsafe_allow_html=True)
 
 tab1,tab2,tab3=st.tabs(["Upload SOFI EXL File","Decision Criteria","Upload Comments "])
 
@@ -448,9 +448,9 @@ with tab2:
 
 
 with tab1:
-    #if uploaded_file is not None and display_button:
-    if st.session_state.button_1:
-        # Read the Excel file into a DataFrame
+    if uploaded_file is not None and display_button:
+     if st.session_state.button_1:
+        # Read the Excel file into a DataFrame, also apply if not in none condition
         df_raw = pd.read_excel(uploaded_file)
     
         df = pd.read_excel(uploaded_file, skiprows=start_row, usecols=range(start_column, end_column + 1))
